@@ -34,7 +34,14 @@ struct PlayingCard: CustomStringConvertible {
     enum Rank: CustomStringConvertible {
         
         var description: String {
-            return "\(order)"
+            switch self {
+            case .ace:
+                return "A"
+            case .numeric(let pips):
+                return String(pips)
+            case .face(let kind):
+                return kind
+            }
         }
         
         case ace
